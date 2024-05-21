@@ -1,35 +1,33 @@
 package com.example.discordbackend.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
-public class Server {
+@Table(name = "server")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+public class Server implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int serverId;
+    @Column(name = "id", nullable = false)
+    private Long id;
 
-    @Column(nullable = false, length = 10)
-    private String serverCode;
+    @Column(name = "code", nullable = false, length = 10)
+    private String code;
 
-    @Column(nullable = false, length = 50)
-    private String serverName;
+    @Column(name="name", nullable = false, length = 50)
+    private String name;
 
     // thumbnail 이미지 추후 구현
 
     @OneToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "owner_id", referencedColumnName = "id",
+                foreignKey = @ForeignKey(name = "server_user_fk"))
     private User owner;
 
 //    @ManyToMany // ManyToMany 사용하지 않기. 변경해야함 https://ict-nroo.tistory.com/127참고
@@ -37,6 +35,6 @@ public class Server {
 //    private User participant;
 
     @CreatedDate
-    @Column(updatable = false)
+    @Column(name="created_at", updatable = false)
     private LocalDateTime createdAt;
 }
