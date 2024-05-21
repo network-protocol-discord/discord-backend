@@ -1,9 +1,10 @@
 create table user(
                      id bigint not null auto_increment primary key,
-                     login_id varchar(50) not null,
+                     username varchar(50) not null,
                      password varchar(100) not null,
                      email varchar(50) not null,
-                     name varchar(30) not null,
+                     nickname varchar(30) not null,
+                     authority varchar(30) not null,
                      created_at datetime(6) not null
 );
 
