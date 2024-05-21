@@ -1,36 +1,31 @@
 package com.example.discordbackend.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
-public class Channel {
+@Table(name = "message")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+public class Channel implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int channelId;
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "serverId")
-    private Server includedIn;
+    @JoinColumn(name = "server_id", referencedColumnName = "id",
+            nullable = false, foreignKey = @ForeignKey(name = "channel_server_fk"))
+    private Server server;
 
-    // text || voice
-    private String type;
-
-    @Column(nullable = false, length = 50)
-    private String channelName;
+    @Column(name = "name", nullable = false, length = 50)
+    private String name;
 
     @CreatedDate
-    @Column(updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 }

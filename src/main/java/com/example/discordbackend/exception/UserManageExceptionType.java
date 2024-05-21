@@ -3,7 +3,11 @@ package com.example.discordbackend.exception;
 import org.springframework.http.HttpStatus;
 
 public enum UserManageExceptionType implements BaseExceptionType {
-    DUPLICATED_SIGNUP_USERNAME(600, HttpStatus.OK, "이미 존재하는 아이디입니다.");
+
+    //TODO: HttpStatus OK가 맞나..??
+    DUPLICATED_SIGNUP_USERNAME(600, HttpStatus.CONFLICT, "이미 존재하는 아이디입니다."),
+
+    DUPLICATED_SIGNUP_NICKNAME(601, HttpStatus.CONFLICT, "이미 존재하는 닉네임입니다.");
 
     private int errorCode;
     private HttpStatus httpStatus;

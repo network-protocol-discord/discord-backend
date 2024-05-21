@@ -1,40 +1,39 @@
 package com.example.discordbackend.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
-public class Message {
+@Table(name = "message")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+public class Message implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int messageId;
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "channelId")
+    @JoinColumn(name = "channel_id", referencedColumnName = "id", nullable = false,
+            foreignKey = @ForeignKey(name = "message_channel_fk"))
     private Channel channel;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false,
+            foreignKey = @ForeignKey(name = "message_user_fk"))
     private User user;
 
     // text만 허용 (image or file x)
-    @Column(nullable = false)
+    @Column(name="content", columnDefinition = "longtext")
     private String content;
 
     // isVolatile (channel이 음성통화 유형일 때 휘발성 채팅)
 
     @CreatedDate
-    @Column(updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 }
