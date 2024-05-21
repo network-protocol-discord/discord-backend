@@ -4,6 +4,7 @@ create table user(
                      password varchar(100) not null,
                      email varchar(50) not null,
                      name varchar(30) not null,
+                     authority varchar(30) not null,
                      created_at datetime(6) not null
 );
 
