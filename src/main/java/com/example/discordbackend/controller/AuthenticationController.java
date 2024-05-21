@@ -34,6 +34,7 @@ public class AuthenticationController {
 
     private final DiscordUserDetailService discordUserDetailService;
 
+    //로그인 로직
     @PostMapping("/authenticate")
     public ResponseEntity<Map<String, String>> authorize(@Valid @RequestBody LoginRequest loginDto) {
 
@@ -62,5 +63,21 @@ public class AuthenticationController {
         responseBody.put("username", username);
 
         return new ResponseEntity<>(responseBody, httpHeaders, HttpStatus.OK);
+    }
+
+    //토큰 유효성 검사
+    @PostMapping("/validateToken")
+    public ResponseEntity<Map<String, String>> validateToken(@RequestBody Map<String, String> tokenMap) {
+        String token = tokenMap.get("token");
+        if (jwtTokenProvider.validateToken(token)) {
+            Authentication authentication = jwtTokenProvider.getAuthentication(token);
+            DiscordUserDetails userDetails = (DiscordUserDetails) authentication.getPrincipal();
+            Map<String, String> responseBody = new HashMap<>();
+
+            responseBody.put("username", userDetails.getUsername());
+            return new ResponseEntity<>(responseBody, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 }

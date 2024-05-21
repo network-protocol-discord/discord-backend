@@ -35,7 +35,7 @@ public class UserManageService {
 
         if (userRepository.findByNickname(request.getNickname()) != null) {
             throw new UserManageException(
-                    UserManageExceptionType.DUPLICATED_SIGNUP_USERNAME.getErrMsg());
+                    UserManageExceptionType.DUPLICATED_SIGNUP_NICKNAME.getErrMsg());
         }
 
         User user = User.builder()
