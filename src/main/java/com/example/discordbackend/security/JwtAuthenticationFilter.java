@@ -19,7 +19,7 @@ import java.io.IOException;
 @Slf4j
 public class JwtAuthenticationFilter extends GenericFilterBean {
 
-    public static final String AUTHORIZATION_HEADER = "AuthorizationHeader";
+    public static final String AUTHORIZATION_HEADER = "Authorizationheader";
 
     private final JwtTokenProvider jwtTokenProvider;
 
