@@ -33,7 +33,7 @@ public class SecurityConfig {
         http
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/login", "/join", "/api/**", "/signup").permitAll()
+                        .requestMatchers("/login", "/join", "/api/**", "/signup", "/ws/**").permitAll() // WebSocket endpoint access permission
 //                        .requestMatchers("/signup.html", "/api/user/manage/signup").permitAll()
                         .anyRequest().authenticated()
                 )
