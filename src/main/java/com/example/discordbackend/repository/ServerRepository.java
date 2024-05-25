@@ -12,7 +12,10 @@ public class ServerRepository {
     private Map<String, Server> serverMap = new ConcurrentHashMap<>();
 
     public Server createServer(String name) {
+        // random UUID로 server ID 생성
         String serverId = UUID.randomUUID().toString();
+
+        // server Id와 사용자가 입력한 name으로 새로운 서버 생성
         Server server = new Server(serverId, name);
         serverMap.put(serverId, server);
 
