@@ -11,6 +11,7 @@ public class Server {
     private String serverId;
     private String name;
     private List<ChatRoom> chatRooms = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     @Builder
     public Server(String serverId, String name) {

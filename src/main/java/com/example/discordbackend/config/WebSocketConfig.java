@@ -12,9 +12,10 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     private final WebSocketHandler webSocketHandler;
 
-    // WebSocketHandler
+    // WebSocketHandler (ws://localhost:8080/ws/server로 websocket에 접속)
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(webSocketHandler, "/ws/server").setAllowedOrigins("*");
+        registry.addHandler(webSocketHandler, "/ws/server/{serverId}").setAllowedOrigins("*");
     }
 }
