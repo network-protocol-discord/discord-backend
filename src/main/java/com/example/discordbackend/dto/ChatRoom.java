@@ -1,5 +1,6 @@
 package com.example.discordbackend.dto;
 
+import com.example.discordbackend.service.ChatService;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.web.socket.WebSocketSession;
@@ -19,4 +20,15 @@ public class ChatRoom {
         this.name = name;
     }
 
+    public void handleActions(WebSocketSession session, ChatMessage chatMessage, ChatService chatService) {
+        if (chatMessage.getType().equals(ChatMessage.MessageType.ENTER)) {
+            sessions.add(session);
+            chatMessage.setMessage(chatMessage.getSender() + "님이 입장했습니다.");
+        }
+        sendMessage(chatMessage, chatService);
+    }
+
+    public <T> void sendMessage(T message, ChatService chatService) {
+        sessions.parallelStream().forEach(session -> chatService.sendMessage(session, message));
+    }
 }

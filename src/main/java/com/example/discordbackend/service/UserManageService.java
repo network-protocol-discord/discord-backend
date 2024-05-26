@@ -6,7 +6,6 @@ import com.example.discordbackend.exception.UserManageExceptionType;
 import com.example.discordbackend.model.Authority;
 import com.example.discordbackend.model.User;
 import com.example.discordbackend.repository.UserRepository;
-import com.example.discordbackend.entity.Users;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
