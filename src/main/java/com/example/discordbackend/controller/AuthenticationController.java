@@ -15,10 +15,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +31,8 @@ public class AuthenticationController {
 
     private final DiscordUserDetailService discordUserDetailService;
 
+    //로그인 로직
+    @CrossOrigin(origins = "http://localhost:3000", exposedHeaders ="Authorizationheader")
     @PostMapping("/authenticate")
     public ResponseEntity<Map<String, String>> authorize(@Valid @RequestBody LoginRequest loginDto) {
 
@@ -62,5 +61,21 @@ public class AuthenticationController {
         responseBody.put("username", username);
 
         return new ResponseEntity<>(responseBody, httpHeaders, HttpStatus.OK);
+    }
+
+    //토큰 유효성 검사
+    @PostMapping("/validateToken")
+    public ResponseEntity<Map<String, String>> validateToken(@RequestBody Map<String, String> tokenMap) {
+        String token = tokenMap.get("token");
+        if (jwtTokenProvider.validateToken(token)) {
+            Authentication authentication = jwtTokenProvider.getAuthentication(token);
+            DiscordUserDetails userDetails = (DiscordUserDetails) authentication.getPrincipal();
+            Map<String, String> responseBody = new HashMap<>();
+
+            responseBody.put("username", userDetails.getUsername());
+            return new ResponseEntity<>(responseBody, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 }
