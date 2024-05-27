@@ -86,21 +86,11 @@
     }
 
     function recvMessage(recv) {
-        console.log('recv object:', recv)
-        if (recv.type === 'ENTER') {
-            messages.unshift({
-                type: recv.type,
-                sender: '[알림]', // 'type'이 'ENTER'일 때 '[알림]'으로 설정
-                message: recv.message
-            });
-        } else {
-            // 'type'이 'ENTER'가 아닌 경우, 'sender'에 'recv.sender'를 그대로 사용
-            messages.unshift({
-                type: recv.type,
-                sender: recv.sender,
-                message: recv.message
-            });
-        }
+        messages.unshift({
+            type: recv.type,
+            sender: recv.type === 'ENTER' ? '[알림]' : recv.sender,
+            message: recv.message
+        });
         var messageList = document.getElementById('message-list');
         var listItem = document.createElement('li');
         listItem.className = 'list-group-item';
