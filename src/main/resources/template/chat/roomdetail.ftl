@@ -37,6 +37,7 @@
     var ws = Stomp.over(sock);
     var reconnect = 0;
     var roomId = '${roomId}'; // 서버에서 전달된 roomId
+    var serverId = '${serverId}';
     var sender = localStorage.getItem('wschat.sender');
     var token = localStorage.getItem('authToken');
     var room = {};
@@ -53,7 +54,8 @@
     });
 
     function findRoom() {
-        axios.get('/chat/room/' + roomId, {
+        console.log('Finding room with serverId:', serverId, 'and roomId:', roomId);
+        axios.get('/server/'+ serverId + '/chat/room/' + roomId, {
             headers: {
                 'Authorization': 'Bearer ' + token
             }
@@ -62,7 +64,7 @@
             document.getElementById('room-name').textContent = room.name;
         }).catch(function (error) {
             if (error.response.status === 401) {
-                window.location.href = '/login';
+                window.location.href = '/server/'+ serverId + '/chat/room';
             } else {
                 console.error('Error fetching room data:', error);
             }

@@ -6,36 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="1d0876dd-3172-48ce-89b9-b2a8dcb2b762" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/config/WebSocketConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/config/WebSocketConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/controller/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/controller/ChatController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/controller/WebSocketHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/dto/ChatRoom$ChatRoomBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/dto/ChatRoom$ChatRoomBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/dto/ChatRoom.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/dto/ChatRoom.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/service/ChatService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/SecurityConfig$1.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/SecurityConfig.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/WebSocketConfig.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/controller/ChatRoomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/discordbackend/controller/ChatRoomController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/WebSocketMessageBrokerConfig.class.uniqueId0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/config/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/controller/WebSocketHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/dto/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/dto/ChatRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/service/ChatService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/controller/ChatRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/discordbackend/controller/ChatRoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/chat/room.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/chat/room.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/chat/roomdetail.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/chat/roomdetail.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +232,8 @@
       <workItem from="1716705914111" duration="8613000" />
       <workItem from="1716734742241" duration="2751000" />
       <workItem from="1716737557642" duration="875000" />
-      <workItem from="1716739006613" duration="9169000" />
+      <workItem from="1716739006613" duration="11715000" />
+      <workItem from="1716816653142" duration="13263000" />
     </task>
     <servers />
   </component>

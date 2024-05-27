@@ -40,7 +40,7 @@
     }
 
     function findAllRoom() {
-        axios.get('/chat/rooms')
+        axios.get('/server/${serverId}/chat/rooms') // 수정된 부분
             .then(function(response) {
                 var chatrooms = response.data;
                 var listElement = document.getElementById('chatroom_list');
@@ -68,7 +68,7 @@
         }
         var params = new URLSearchParams();
         params.append('name', roomName);
-        axios.post('/chat/room', params)
+        axios.post('/server/${serverId}/chat/room', params) // 수정된 부분
             .then(function(response) {
                 alert(response.data.name + '방 개설에 성공하였습니다.');
                 document.getElementById('room_name').value = '';
@@ -85,7 +85,7 @@
         if (sender !== null && sender.trim() !== '') {
             localStorage.setItem('wschat.sender', sender);
             localStorage.setItem('wschat.roomId', roomId);
-            location.href = '/chat/room/enter/' + roomId;
+            location.href = '/server/${serverId}/chat/room/enter/' + roomId; // 수정된 부분
         }
     }
 </script>
