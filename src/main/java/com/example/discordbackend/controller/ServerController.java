@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/server")
@@ -18,9 +20,15 @@ public class ServerController {
     private ServerService serverService;
 
     @PostMapping
-    public ResponseEntity<Server> createServer(@RequestBody ServerRequest serverRequest) {
-        Server server = serverService.createServer(serverRequest.getServerName(), serverRequest.getCreatorNickname());
+    public ResponseEntity<Server> createServer(@RequestParam("name") String name) {
+        Server server = serverService.createServer(name);
         return ResponseEntity.ok(server);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Server>> getAll() {
+        List<Server> servers = serverService.getAll();
+        return ResponseEntity.ok(servers);
     }
 
     @GetMapping("/{serverId}")
