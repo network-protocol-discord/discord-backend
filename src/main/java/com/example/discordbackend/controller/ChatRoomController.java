@@ -44,15 +44,15 @@ public class ChatRoomController {
     // 모든 채팅방 목록 반환
     @GetMapping("/rooms")
     @ResponseBody
-    public List<ChatRoom> room() {
-        return chatRoomRepository.findAllRoom();
+    public List<ChatRoom> room(@PathVariable String serverId) {
+        return serverService.findServerById(serverId).getChatRooms();
     }
 
     // 채팅방 생성
     @PostMapping("/room")
     @ResponseBody
-    public ChatRoom createRoom(@RequestParam String name) {
-        return chatRoomRepository.createChatRoom(name);
+    public ChatRoom createRoom(@PathVariable String serverId, @RequestParam String name) {
+        return serverService.createRoom(serverId, name);
     }
 
     // 채팅방 입장 화면
