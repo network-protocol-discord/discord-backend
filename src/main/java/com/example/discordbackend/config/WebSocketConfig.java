@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.*;
+import sun.misc.SignalHandler;
 
 @RequiredArgsConstructor
 @Configuration
@@ -18,7 +19,6 @@ public class WebSocketConfig implements WebSocketConfigurer {
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(webSocketHandler, "/ws/server").setAllowedOrigins("*");
         registry.addHandler(webSocketHandler, "/ws/server/{serverId}").setAllowedOrigins("*");
-
         registry.addHandler(webSocketHandler, "/ws/chat").setAllowedOrigins("*");
     }
 }
