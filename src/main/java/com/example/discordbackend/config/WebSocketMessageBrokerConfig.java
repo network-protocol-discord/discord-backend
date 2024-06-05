@@ -20,4 +20,6 @@ public class WebSocketMessageBrokerConfig implements WebSocketMessageBrokerConfi
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws-stomp").setAllowedOriginPatterns("*").withSockJS();
     }
+
+
 }
