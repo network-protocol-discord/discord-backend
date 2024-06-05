@@ -4,10 +4,10 @@ import com.example.discordbackend.dto.Server;
 import com.example.discordbackend.service.ServerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import com.example.discordbackend.dto.ChatRoom;
 import com.example.discordbackend.repository.ChatRoomRepository;
-import com.example.discordbackend.repository.ServerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -68,5 +68,17 @@ public class ChatRoomController {
     @ResponseBody
     public ChatRoom roomInfo(@PathVariable String roomId) {
         return chatRoomRepository.findRoomById(roomId);
+    }
+
+    // 채팅방 삭제
+    @DeleteMapping("/room/{roomId}")
+    @ResponseBody
+    public ResponseEntity<String> deleteRoom(@PathVariable String serverId, @PathVariable String roomId) {
+        boolean isDeleted = serverService.deleteRoom(serverId, roomId);
+        if (isDeleted) {
+            return ResponseEntity.ok("채팅방이 삭제되었습니다.");
+        } else {
+            return ResponseEntity.status(404).body("채팅방 삭제에 실패했습니다.");
+        }
     }
 }

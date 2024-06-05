@@ -15,6 +15,7 @@
 <div class="container" id="app">
     <div>
         <h2 id="room-name"></h2>
+        <button class="btn btn-danger" onclick="deleteCurrentRoom()">채팅방 삭제</button>
     </div>
     <div class="input-group">
         <div class="input-group-prepend">
@@ -119,6 +120,24 @@
                 }, 10 * 1000);
             }
         });
+    }
+
+    function deleteCurrentRoom() {
+        if (confirm('정말로 이 채팅방을 삭제하시겠습니까?')) {
+            axios.delete(`/server/${serverId}/chat/room/${roomId}`)
+                .then(function (response) {
+                    if (response.data) {
+                        alert('채팅방이 삭제되었습니다.');
+                        window.location.href = '/server/' + serverId + '/chat/room';
+                    } else {
+                        alert('채팅방 삭제에 실패하였습니다.');
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Error deleting room:', error);
+                    alert('채팅방 삭제에 실패하였습니다.');
+                });
+        }
     }
 </script>
 </body>

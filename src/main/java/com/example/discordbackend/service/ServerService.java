@@ -4,6 +4,7 @@ import com.example.discordbackend.dto.ChatRoom;
 import com.example.discordbackend.dto.Server;
 import com.example.discordbackend.dto.User;
 import com.example.discordbackend.repository.ServerRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,5 +79,20 @@ public class ServerService {
             throw new IllegalArgumentException("Server not found");
         }
         return server.addChatRoom(name);
+    }
+
+    @Transactional
+    public boolean deleteRoom(String serverId, String roomId) {
+        Server server = findServerById(serverId);
+        if (server != null) {
+            List<ChatRoom> chatRooms = server.getChatRooms();
+            boolean removed = chatRooms.removeIf(room -> room.getRoomId().equals(roomId));
+            if (removed) {
+                // Persist the change if necessary, e.g., by saving the server entity
+                serverRepository.save(server);
+                return true;
+            }
+        }
+        return false;
     }
 }
