@@ -8,6 +8,7 @@ public class User {
 
     private String userId;
     private String nickname;
+    private String camKey;
 
     @Builder
     public User(String userId, String nickname) {
