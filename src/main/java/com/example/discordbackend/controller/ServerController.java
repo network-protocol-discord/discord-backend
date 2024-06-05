@@ -37,15 +37,15 @@ public class ServerController {
         return ResponseEntity.ok(server);
     }
 
-    @PostMapping("/{serverId}/join")
-    public ResponseEntity<User> joinServer(@PathVariable String serverId, @RequestBody UserRequest userRequest) {
-        User user = serverService.addUserToServer(serverId, userRequest.getNickname());
-        return ResponseEntity.ok(user);
-    }
-
-    @PostMapping("/{serverId}/addUser")
-    public ResponseEntity<User> addUserToServer(@PathVariable String serverId, @RequestBody UserRequest userRequest) {
-        User user = serverService.addUserToServer(serverId, userRequest.getNickname());
-        return ResponseEntity.ok(user);
-    }
+//    @PostMapping("/{serverId}/join")
+//    public ResponseEntity<User> joinServer(@PathVariable String serverId, @RequestBody UserRequest userRequest) {
+//        User user = serverService.addUserToServer(serverId, userRequest.getNickname());
+//        return ResponseEntity.ok(user);
+//    }
+//
+//    @PostMapping("/{serverId}/addUser")
+//    public ResponseEntity<User> addUserToServer(@PathVariable String serverId, @RequestBody UserRequest userRequest) {
+//        User user = serverService.addUserToServer(serverId, userRequest.getNickname());
+//        return ResponseEntity.ok(user);
+//    }
 }
