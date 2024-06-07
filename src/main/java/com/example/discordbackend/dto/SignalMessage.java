@@ -4,13 +4,11 @@ import lombok.Data;
 
 @Data
 public class SignalMessage {
-    private String sdp;
+    private Object sdp;
 
-    private String senderId;
+    private String key;
 
-    private String receiverId;
-
-    private String candidate;
+    private Object candidate;
 
     private String roomId;
 }

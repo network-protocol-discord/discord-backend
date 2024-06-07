@@ -24,7 +24,7 @@ public class ChatController {
 //    private final ServerService serverService;
 
     @MessageMapping("/chat/message")
-    public void message(ChatMessage message) {
+    public void message(@Payload ChatMessage message) {
         message.setTime(LocalDateTime.now());
         if (ChatMessage.MessageType.ENTER.equals(message.getType())) {
             message.setMessage(message.getSender() + "님이 입장하셨습니다.");
@@ -36,21 +36,32 @@ public class ChatController {
     @MessageMapping("/video/peer/offer")
     public void peerOffer(@Payload SignalMessage signalMessage) {
 
-        log.info("[sdp]: {}", signalMessage.getSdp());
         messagingTemplate.convertAndSend("/sub/video/peer/offer/" + signalMessage.getRoomId(), signalMessage);
     }
 
     @MessageMapping("/video/peer/candidate")
     public void peerIceCandidate(@Payload SignalMessage signalMessage) {
 
-        log.info("[candidate]: {}", signalMessage.getCandidate());
-        messagingTemplate.convertAndSend("/sub/video/peer/candidate" + signalMessage.getRoomId(), signalMessage);
+        log.info("[candidate]: {}, [roomId]: {}", signalMessage.getCandidate(), signalMessage.getRoomId());
+        messagingTemplate.convertAndSend("/sub/video/peer/candidate/" + signalMessage.getRoomId(), signalMessage);
     }
 
     @MessageMapping("/video/peer/answer")
     public void peerAnswer(@Payload SignalMessage signalMessage) {
 
-        log.info("[sdp]: {}", signalMessage.getSdp());
-        messagingTemplate.convertAndSend("/sub/video/peer/answer" + signalMessage.getRoomId(), signalMessage);
+        messagingTemplate.convertAndSend("/sub/video/peer/answer/" + signalMessage.getRoomId(), signalMessage);
+    }
+
+    @MessageMapping("/call/key/{roomId}")
+    public void callKey(@Payload String message, @DestinationVariable(value = "roomId") String roomId) {
+
+        messagingTemplate.convertAndSend("/sub/call/key/" + roomId, message);
+    }
+
+    @MessageMapping("/send/key/{roomId}")
+    public void sendKey(@Payload String key, @DestinationVariable(value = "roomId") String roomId) {
+        log.info("[KEY]: {}", key);
+
+        messagingTemplate.convertAndSend("/sub/send/key/" + roomId, key);
     }
 }
