@@ -37,6 +37,12 @@ public class ServerController {
         return ResponseEntity.ok(server);
     }
 
+    // 서버 삭제
+    @DeleteMapping
+    public String deleteRoom(@PathVariable String serverId) {
+        return serverService.deleteServer(serverId);
+    }
+
 //    @PostMapping("/{serverId}/join")
 //    public ResponseEntity<User> joinServer(@PathVariable String serverId, @RequestBody UserRequest userRequest) {
 //        User user = serverService.addUserToServer(serverId, userRequest.getNickname());

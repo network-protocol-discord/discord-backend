@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequiredArgsConstructor
-@Controller
+@RestController
 @RequestMapping("/server/{serverId}/chat")
 @Slf4j
 public class ChatRoomController {
@@ -46,6 +46,19 @@ public class ChatRoomController {
     public ChatRoom createRoom(@PathVariable String serverId, @RequestParam String name) {
         return serverService.createRoom(serverId, name);
     }
+
+    // 채팅방 삭제
+    @DeleteMapping
+    public String deleteRoom(@PathVariable("serverId") String serverId) {
+        return serverService.deleteRoom(serverId);
+    }
+
+    // 이름 변경
+    @PutMapping("/room/update")
+    public String changeRoomName(@PathVariable("serverId") String serverId, @RequestParam String newName) {
+        return serverService.changeRoomName(serverId, newName);
+    }
+
 
     // 채팅방 입장 화면
 //    @GetMapping("/room/enter/{roomId}")

@@ -79,4 +79,16 @@ public class ServerService {
         }
         return server.addChatRoom(name);
     }
+
+    public String deleteRoom(String serverId) {
+        return "abc";
+    }
+
+    public String changeRoomName(String serverId, String newName) {
+        return "ChangedRoomName";
+    }
+
+    public String deleteServer(String serverId) {
+        return "deleteServer";
+    }
 }

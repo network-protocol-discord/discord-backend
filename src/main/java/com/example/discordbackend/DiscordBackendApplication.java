@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class DiscordBackendApplication {
@@ -51,6 +52,11 @@ public class DiscordBackendApplication {
         connector.setSecure(false);
         connector.setRedirectPort(443);
         return connector;
+    }
+
+    @Bean
+    public HiddenHttpMethodFilter hiddenHttpMethodFilter(){
+        return new HiddenHttpMethodFilter();
     }
 
 }
